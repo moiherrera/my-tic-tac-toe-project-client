@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,42 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
-</html>
+      <h1>Tic Tac Toe</h1>
+      <!-- CREDENTIAL[email] will be where the email from our credential JSON object be processed through-->
+      <!-- We will use error driven development-->
+      <!-- We will be using Prevent Default later -->
+      <div id="signed-in-user"></div>
+      <div id="message"></div>
+      <form id='sign-up' class='border'>
+          <fieldset>
+              <legend>Sign up!</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type='password' name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" value="Sign up!">
+          </fieldset>
+      </form>
+
+      <form id='sign-in' class='border'>
+          <fieldset>
+              <legend>Sign In</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="submit" value="Sign in!">
+          </fieldset>
+      </form>
+      <form id='sign-out' class='border'>
+          <fieldset>
+              <legend>Sign Out</legend>
+              <input type="submit" value="Sign Out!">
+          </fieldset>
+      </form>
+
+      <form id='change-password' class='border'>
+          <fieldset>
+              <legend>Change Password!</legend>
+              <input type="password" name="passwords[old]" placeholder="Current Password">
+              <input type="password" name="passwords[new]" placeholder="New Password">
+              <input type='submit' value='Change Password!'>
+          </fieldset>
+      </form>
