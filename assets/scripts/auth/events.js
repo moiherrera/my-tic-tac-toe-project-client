@@ -48,10 +48,16 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+
+const enterVar = function (event) {
+  $(this).text('x')
+}
+
 // ui.signInSuccess , pass whatever API gives it, in this case its TOKEN.
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  enterVar
 }
