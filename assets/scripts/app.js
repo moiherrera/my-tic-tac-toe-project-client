@@ -12,4 +12,6 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('.grid').on('click', authEvents.enterVar)
+  $('.grid').on('click', authEvents.storeEvent)
+  $('.grid').on('click', authEvents.identifyWinner)
 })

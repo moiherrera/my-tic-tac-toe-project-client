@@ -36,9 +36,14 @@ const signOutSuccess = function () {
 }
 const failure = function () {
   $('#message').text('Operation Failed!')
-  $('#message').removeClass('failuer') // better?
+  $('#message').removeClass('failure') // better?
   $('#message').addClass('failed')
   console.log('Failure ran')
+}
+
+const enterVarFailure = function () {
+  $('#message').text('Error must click on empty space')
+  console.log('Error, User must click on empty space. Invalid Move')
 }
 
 module.exports = {
@@ -46,5 +51,6 @@ module.exports = {
   signInSuccess,
   changePasswordSuccess,
   signOutSuccess,
-  failure
+  failure,
+  enterVarFailure
 }
