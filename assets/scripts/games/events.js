@@ -3,96 +3,43 @@ const api = require('./api')
 const ui = require('./ui')
 
 let activePlayer = 'o'
-const gameSoFar = []
+const gameSoFar = new Array(9)
 
 const nextPlayer = function () {
+  $('#message').text('Your turn: ' + activePlayer)
   activePlayer === 'x' ? activePlayer = 'o' : activePlayer = 'x'
 }
 
-const onMakeMove = function (event) {
-  nextPlayer()
-  const currentIndex = event.target.id
-  const indexOfClick = (currentIndex.slice(-1) - 1)
-  gameSoFar[indexOfClick] = activePlayer
-
-  if ($(this).is(':empty')) {
-    if (activePlayer === 'x' || activePlayer === 'o') {
-      $(this).text(activePlayer)
-    } else {
-      ui.enterVarFailure()
-    }
-  }
-  if (indexOfClick === 0) {
-    if (gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[0] === gameSoFar[3] && gameSoFar[0] === gameSoFar[6]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[0] === gameSoFar[4] && gameSoFar[0] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 1) {
-    if (gameSoFar[1] === gameSoFar[4] && gameSoFar[1] === gameSoFar[7]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 2) {
-    if (gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[2] === gameSoFar[5] && gameSoFar[2] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 3) {
-    if (gameSoFar[0] === gameSoFar[3] && gameSoFar[0] === gameSoFar[6]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[3] === gameSoFar[4] && gameSoFar[3] === gameSoFar[5]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 4) {
-    if (gameSoFar[0] === gameSoFar[4] && gameSoFar[0] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[1] === gameSoFar[4] && gameSoFar[1] === gameSoFar[7]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[3] === gameSoFar[4] && gameSoFar[3] === gameSoFar[5]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[6] === gameSoFar[2] && gameSoFar[6] === gameSoFar[4]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 5) {
-    if (gameSoFar[2] === gameSoFar[5] && gameSoFar[2] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[3] === gameSoFar[4] && gameSoFar[3] === gameSoFar[5]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 6) {
-    if (gameSoFar[0] === gameSoFar[3] && gameSoFar[0] === gameSoFar[6]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[6] === gameSoFar[2] && gameSoFar[6] === gameSoFar[4]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[6] === gameSoFar[7] && gameSoFar[6] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 7) {
-    if (gameSoFar[6] === gameSoFar[7] && gameSoFar[6] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[1] === gameSoFar[4] && gameSoFar[1] === gameSoFar[7]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  } else if (indexOfClick === 8) {
-    if (gameSoFar[6] === gameSoFar[7] && gameSoFar[6] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[2] === gameSoFar[5] && gameSoFar[2] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    } else if (gameSoFar[0] === gameSoFar[4] && gameSoFar[0] === gameSoFar[8]) {
-      $('#message').text('player ' + activePlayer + ' wins!')
-    }
-  }
-  if (gameSoFar.length === 9) {
-    $('#message').text('Tied Game')
+const identifyWinner = function (gameSoFar) {
+  console.log(gameSoFar)
+  if ((gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) ||
+       (gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[3] && gameSoFar[0] === gameSoFar[6]) ||
+       (gameSoFar[1] !== undefined && gameSoFar[1] === gameSoFar[4] && gameSoFar[1] === gameSoFar[7]) ||
+       (gameSoFar[2] !== undefined && gameSoFar[2] === gameSoFar[5] && gameSoFar[2] === gameSoFar[8]) ||
+       (gameSoFar[6] !== undefined && gameSoFar[6] === gameSoFar[2] && gameSoFar[6] === gameSoFar[4]) ||
+       (gameSoFar[3] !== undefined && gameSoFar[3] === gameSoFar[4] && gameSoFar[3] === gameSoFar[5]) ||
+       (gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[4] && gameSoFar[0] === gameSoFar[8]) ||
+       (gameSoFar[6] !== undefined && gameSoFar[6] === gameSoFar[7] && gameSoFar[6] === gameSoFar[8])) {
+    $('#message').text('Player ' + activePlayer + ' Wins!')
+  } else if (gameSoFar[0] !== undefined && gameSoFar[1] !== undefined && gameSoFar[2] !== undefined && gameSoFar[3] !== undefined && gameSoFar[4] !== undefined && gameSoFar[5] !== undefined && gameSoFar[6] !== undefined && gameSoFar[7] !== undefined && gameSoFar[8] !== undefined) {
+    $('#message').text('Tie!!')
   }
   return gameSoFar
+}
+
+const onMakeMove = function (event) {
+  if ($(this).is(':empty')) {
+    nextPlayer()
+    const currentIndex = $(event.target).data('cell-index')
+    gameSoFar[currentIndex] = activePlayer
+    console.log(currentIndex)
+    console.log(gameSoFar)
+    $(this).text(activePlayer)
+    identifyWinner(gameSoFar)
+  } else {
+    $('#message').text('Error must click on empty space')
+    console.log('Error, User must click on empty space. Invalid Move')
+  }
 }
 
 const onCreateGame = function (event) {
