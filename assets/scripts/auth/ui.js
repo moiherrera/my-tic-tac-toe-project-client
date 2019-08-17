@@ -41,16 +41,10 @@ const failure = function () {
   console.log('Failure ran')
 }
 
-const enterVarFailure = function () {
-  $('#message').text('Error must click on empty space')
-  console.log('Error, User must click on empty space. Invalid Move')
-}
-
 module.exports = {
   signUpSuccess,
   signInSuccess,
   changePasswordSuccess,
   signOutSuccess,
-  failure,
-  enterVarFailure
+  failure
 }
