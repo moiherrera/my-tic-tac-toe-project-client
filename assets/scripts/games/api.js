@@ -14,6 +14,18 @@ const createGame = () => {
   })
 }
 
+const updateGame = (currentMoveData) => {
+  return $.ajax({
+    url: config.apiUrl + `/games/${store.game.id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: currentMoveData
+  })
+}
+
 module.exports = {
-  createGame
+  createGame,
+  updateGame
 }

@@ -9,13 +9,19 @@ const onNewGameSuccess = (data) => {
     .addClass('success')
     .removeClass('failure')
 }
-
-
 const failure = function (error) {
   $('#message').text('Error')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('onCreateFailure ran. Error is :', error)
+}
+
+const onUpdateSuccess = (data) => {
+  store.game = data.game
+}
+
+const onUpdateFailure = function () {
+  $('#message').text('Error must click on empty space')
 }
 const enterVarFailure = function () {
   $('#message').text('Error must click on empty space')
@@ -25,5 +31,7 @@ const enterVarFailure = function () {
 module.exports = {
   enterVarFailure,
   onNewGameSuccess,
+  onUpdateSuccess,
+  onUpdateFailure,
   failure
 }
