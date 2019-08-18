@@ -1,7 +1,7 @@
 const config = require('../config')
 const store = require('../store')
 
-const createGame = () => {
+const createGame = function () {
   console.log('Create New Game')
   console.log(store)
   return $.ajax({
@@ -14,7 +14,7 @@ const createGame = () => {
   })
 }
 
-const updateGame = (currentMoveData) => {
+const updateGame = function (currentMoveData) {
   return $.ajax({
     url: config.apiUrl + `/games/${store.game.id}`,
     method: 'PATCH',
@@ -25,7 +25,19 @@ const updateGame = (currentMoveData) => {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    url: config.apiUrl + `/games`,
+    method: 'GET',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createGame,
-  updateGame
+  updateGame,
+  getGames
 }

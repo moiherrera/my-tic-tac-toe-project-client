@@ -12,19 +12,31 @@ const signUpSuccess = function () {
   $('#message').addClass('success')
   console.log('Sign Up Success')
 }
-const signInSuccess = function (data) {
-  store.user = data.user
-  $('#message').text('Successful sign-in!')
+const signUpFailure = function () {
+  $('#message').text('Unsuccessful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
+  console.log('Sign up Error')
+}
+const signInSuccess = function (data) {
+  store.user = data.user
+  $('#message2').text('Successful sign-in! Create Game')
+  $('#message2').removeClass('success') // better?
+  $('#message2').addClass('success')
+  $('#auth-events').hide()
+  $('.second-view').show()
+  $('.container').hide()
   console.log('Sign in Success! User is', store.user)
   $('#signed-in-user').text(store.user.email)
 }
-const changePasswordSuccess = function () {
-  $('#message').text('Successful Change in Password!')
-  $('#message').removeClass('success') // better?
-  $('#message').addClass('success')
-  console.log('Change Password Succes')
+const signInFailure = function (data) {
+  store.user = data.user
+  $('#message2').text('Unsuccessful sign-in!')
+  $('#message2').removeClass('success') // better?
+  $('#message2').addClass('success')
+  $('#auth-events').hide()
+  $('.second-view').show()
+  console.log('Sign in Unsuccessful')
 }
 const signOutSuccess = function () {
   store.user = null
@@ -32,19 +44,30 @@ const signOutSuccess = function () {
   $('#message').text('Successful Sign Out!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
+  $('.second-view').hide()
+  $('#auth-events').show()
   console.log('Successful Sign Out')
 }
-const failure = function () {
-  $('#message').text('Operation Failed!')
-  $('#message').removeClass('failure') // better?
-  $('#message').addClass('failed')
-  console.log('Failure ran')
+const changePasswordSuccess = function () {
+  $('#message2').text('Successful Change in Password!')
+  $('#message2').removeClass('success') // better?
+  $('#message2').addClass('success')
+  console.log('Change Password Succes')
+}
+
+const changePasswordFailure = function () {
+  $('#message2').text('Failed to Change Password!')
+  $('#message2').removeClass('failure') // better?
+  $('#message2').addClass('failed')
+  console.log('Failed to Change Password')
 }
 
 module.exports = {
   signUpSuccess,
+  signUpFailure,
   signInSuccess,
+  signInFailure,
   changePasswordSuccess,
   signOutSuccess,
-  failure
+  changePasswordFailure
 }

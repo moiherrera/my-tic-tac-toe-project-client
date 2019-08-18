@@ -4,13 +4,17 @@ const ui = require('./ui')
 const store = require('./../store')
 
 let activePlayer = 'o'
-const gameSoFar = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+let gameSoFar = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 
 const nextPlayer = function () {
-  $('#message').text('Your turn: ' + activePlayer)
+  $('#message2').text('Your turn: ' + activePlayer)
   activePlayer === 'x' ? activePlayer = 'o' : activePlayer = 'x'
 }
-
+const preventMove = function () {
+  if (store.over === true && $(this).is(' :empty')) {
+    $('#message2'.text('Error game is over, No more moves can be made!! )/:< Please Start Over! )/:< '))
+  }
+}
 const identifyWinner = function (gameSoFar) {
   console.log(gameSoFar)
   if ((gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) ||
@@ -21,17 +25,17 @@ const identifyWinner = function (gameSoFar) {
        (gameSoFar[3] !== undefined && gameSoFar[3] === gameSoFar[4] && gameSoFar[3] === gameSoFar[5]) ||
        (gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[4] && gameSoFar[0] === gameSoFar[8]) ||
        (gameSoFar[6] !== undefined && gameSoFar[6] === gameSoFar[7] && gameSoFar[6] === gameSoFar[8])) {
-    $('#message').text('Player ' + activePlayer + ' Wins!')
+    $('#message2').text('Player ' + activePlayer + ' Wins! ' + 'Game Over, Please Start New Game')
     store.over = true
   } else if (gameSoFar[0] !== '0' && gameSoFar[1] !== '1' && gameSoFar[2] !== '2' && gameSoFar[3] !== '3' && gameSoFar[4] !== '4' && gameSoFar[5] !== '5' && gameSoFar[6] !== '6' && gameSoFar[7] !== '7' && gameSoFar[8] !== '8') {
-    $('#message').text('Tie!!')
+    $('#message2').text('Tie!! ' + 'Game Over, Please Start New Game')
     store.over = true
   }
   return gameSoFar
 }
 
 const onMakeMove = function (event) {
-  if ($(this).is(':empty')) {
+  if (store.over === false && $(this).is(':empty')) {
     nextPlayer()
     const currentIndex = $(event.target).data('cell-index')
     gameSoFar[currentIndex] = activePlayer
@@ -45,7 +49,7 @@ const onMakeMove = function (event) {
       game: {
         cell: {
           index: store.index,
-          lue: store.currentPlayer
+          value: store.currentPlayer
         },
         over: store.over
       }
@@ -54,8 +58,7 @@ const onMakeMove = function (event) {
       .then(ui.onUpdateSuccess)
       .catch(ui.onUpdateFailure)
   } else {
-    $('#message').text('Error must click on empty space')
-    console.log('Error, User must click on empty space. Invalid Move')
+    $('#message2').text('Error game is over, No more moves can be made!! ):< Please Start Over! ):< ')
   }
 }
 
@@ -63,14 +66,25 @@ const onCreateGame = function (event) {
   event.preventDefault()
   console.log('New Game Created')
   const data = getFormFields(event.target)
+  gameSoFar = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+  activePlayer = 'o'
   api.createGame(data)
     .then(ui.onNewGameSuccess)
-    .catch(ui.failure)
+    .catch(ui.onNewGameFailure)
+}
+
+const onGetGames = function (data) {
+  event.preventDefault()
+  console.log('Get games')
+  api.getGames(data)
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
 }
 
 // ui.signInSuccess , pass whatever API gives it, in this case its TOKEN.
 module.exports = {
   onMakeMove,
   onCreateGame,
-  identifyWinner
+  identifyWinner,
+  onGetGames
 }

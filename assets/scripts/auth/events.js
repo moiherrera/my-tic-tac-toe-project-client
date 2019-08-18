@@ -10,7 +10,6 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('submitted sign-up')
-
   const data = getFormFields(event.target)
   console.log('sign up data is', data)
   // the eventHandler is going to make the API call, call to the API and its going to handle a successful condition and a failure condition
@@ -39,7 +38,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(event.target) // data = {passwords: {old: 123, new: 456}}
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.changePasswordFailure)
 }
 
 const onSignOut = function (event) {

@@ -16,6 +16,7 @@
       <!-- CREDENTIAL[email] will be where the email from our credential JSON object be processed through-->
       <!-- We will use error driven development-->
       <!-- We will be using Prevent Default later -->
+      <div id="auth-events">
       <div id="signed-in-user"></div>
       <div id="message"></div>
       <form id='sign-up' class='border'>
@@ -36,6 +37,9 @@
               <input type="submit" value="Sign in!">
           </fieldset>
       </form>
+    </div>
+    <div class="second-view">
+      <div id="message2"></div>
       <div class="container">
           <h1>Grid</h1>
             <div class="row">
@@ -51,10 +55,17 @@
 
             </div>
       </div>
+
       <form id='create-game' class='border'>
           <fieldset>
               <legend>Create Game</legend>
               <input type="submit" value="Create Game">
+          </fieldset>
+      </form>
+      <form id='get-games' class='border'>
+          <fieldset>
+              <legend>Get Games</legend>
+              <input type="submit" value="Get Games">
           </fieldset>
       </form>
       <form id='sign-out' class='border'>
@@ -72,3 +83,4 @@
               <input type='submit' value='Change Password!'>
           </fieldset>
       </form>
+    </div>
