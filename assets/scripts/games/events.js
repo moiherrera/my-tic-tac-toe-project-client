@@ -10,11 +10,7 @@ const nextPlayer = function () {
   $('#message2').text('Your turn: ' + activePlayer)
   activePlayer === 'x' ? activePlayer = 'o' : activePlayer = 'x'
 }
-const preventMove = function () {
-  if (store.over === true && $(this).is(' :empty')) {
-    $('#message2'.text('Error game is over, No more moves can be made!! )/:< Please Start Over! )/:< '))
-  }
-}
+
 const identifyWinner = function (gameSoFar) {
   console.log(gameSoFar)
   if ((gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) ||
