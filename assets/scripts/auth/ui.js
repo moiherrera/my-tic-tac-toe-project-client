@@ -14,13 +14,16 @@ const signUpSuccess = function () {
   $('#sign-in').trigger('rest')
   console.log('Sign Up Success')
 }
+
 const signUpFailure = function () {
   $('#message').text('Unsuccessful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
   $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
   console.log('Sign up Error')
 }
+
 const signInSuccess = function (data) {
   store.user = data.user
   $('#message2').text('Successful sign-in! Create Game')
@@ -34,6 +37,7 @@ const signInSuccess = function (data) {
   $('#sign-up').trigger('rest')
   $('#sign-in').trigger('rest')
 }
+
 const signInFailure = function (data) {
   store.user = data.user
   $('#message2').text('Unsuccessful sign-in!')
@@ -45,6 +49,7 @@ const signInFailure = function (data) {
   $('#sign-up').trigger('rest')
   $('#sign-in').trigger('rest')
 }
+
 const signOutSuccess = function () {
   store.user = null
   $('#signed-in-user').text('')
@@ -57,6 +62,7 @@ const signOutSuccess = function () {
   $('#sign-up').trigger('rest')
   $('#sign-in').trigger('rest')
 }
+
 const changePasswordSuccess = function () {
   $('#message2').text('Successful Change in Password!')
   $('#message2').removeClass('success') // better?

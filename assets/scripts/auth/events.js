@@ -20,7 +20,6 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure)
   $('#sign-up').trigger('reset')
   $('#sign-in').trigger('reset')
-  $(this).reset()
 }
 
 const onSignIn = function (event) {
@@ -30,8 +29,6 @@ const onSignIn = function (event) {
 
   const data = getFormFields(event.target)
   console.log('sign up data is', data)
-  $('#sign-in').trigger('rest')
-  $(this).reset()
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -45,18 +42,12 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const clearInput = function () {
-  $('#sign-up').trigger('rest')
-  $('#sign-in').trigger('rest')
-}
-
 const onSignOut = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
-  clearInput()
 }
 // ui.signInSuccess , pass whatever API gives it, in this case its TOKEN.
 module.exports = {
