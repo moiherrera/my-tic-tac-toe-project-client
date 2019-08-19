@@ -18,8 +18,8 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
-  $('sign-up').reset()
-  $('sign-in').reset()
+  $('#sign-up').trigger('reset')
+  $('#sign-in').trigger('reset')
   $(this).reset()
 }
 
@@ -30,7 +30,7 @@ const onSignIn = function (event) {
 
   const data = getFormFields(event.target)
   console.log('sign up data is', data)
-  $('sign-in').reset()
+  $('#sign-in').trigger('rest')
   $(this).reset()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -46,8 +46,8 @@ const onChangePassword = function (event) {
 }
 
 const clearInput = function () {
-  $('sign-up').reset()
-  $('sign-in').reset()
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
 }
 
 const onSignOut = function (event) {

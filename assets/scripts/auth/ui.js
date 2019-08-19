@@ -10,12 +10,16 @@ const signUpSuccess = function () {
   $('#message').text('Successful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
   console.log('Sign Up Success')
 }
 const signUpFailure = function () {
   $('#message').text('Unsuccessful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
   console.log('Sign up Error')
 }
 const signInSuccess = function (data) {
@@ -28,6 +32,8 @@ const signInSuccess = function (data) {
   $('.container').hide()
   console.log('Sign in Success! User is', store.user)
   $('#signed-in-user').text(store.user.email)
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
 }
 const signInFailure = function (data) {
   store.user = data.user
@@ -37,6 +43,8 @@ const signInFailure = function (data) {
   $('#auth-events').hide()
   $('.second-view').show()
   console.log('Sign in Unsuccessful')
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
 }
 const signOutSuccess = function () {
   store.user = null
@@ -47,6 +55,8 @@ const signOutSuccess = function () {
   $('.second-view').hide()
   $('#auth-events').show()
   console.log('Successful Sign Out')
+  $('#sign-up').trigger('rest')
+  $('#sign-in').trigger('rest')
 }
 const changePasswordSuccess = function () {
   $('#message2').text('Successful Change in Password!')
