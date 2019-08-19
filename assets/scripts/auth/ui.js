@@ -10,8 +10,7 @@ const signUpSuccess = function () {
   $('#message').text('Successful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
-  $('#sign-up').trigger('reset')
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
   console.log('Sign Up Success')
 }
 
@@ -19,8 +18,7 @@ const signUpFailure = function () {
   $('#message').text('Unsuccessful sign up!')
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
-  $('#sign-up').trigger('reset')
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
   console.log('Sign up Error')
 }
 
@@ -34,8 +32,7 @@ const signInSuccess = function (data) {
   $('.container').hide()
   console.log('Sign in Success! User is', store.user)
   $('#signed-in-user').text(store.user.email)
-  $('#sign-up').trigger('reset')
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
 }
 
 const signInFailure = function (data) {
@@ -45,9 +42,7 @@ const signInFailure = function (data) {
   $('#message2').addClass('success')
   $('#auth-events').hide()
   $('.second-view').show()
-  console.log('Sign in Unsuccessful')
-  $('#sign-up').trigger('reset')
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
 }
 
 const signOutSuccess = function () {
@@ -59,8 +54,7 @@ const signOutSuccess = function () {
   $('.second-view').hide()
   $('#auth-events').show()
   console.log('Successful Sign Out')
-  $('#sign-up').trigger('reset')
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
 }
 
 const changePasswordSuccess = function () {
@@ -68,6 +62,7 @@ const changePasswordSuccess = function () {
   $('#message2').removeClass('success') // better?
   $('#message2').addClass('success')
   console.log('Change Password Succes')
+  $('form').trigger('reset')
 }
 
 const changePasswordFailure = function () {
@@ -75,6 +70,7 @@ const changePasswordFailure = function () {
   $('#message2').removeClass('failure') // better?
   $('#message2').addClass('failed')
   console.log('Failed to Change Password')
+  $('form').trigger('reset')
 }
 
 module.exports = {
