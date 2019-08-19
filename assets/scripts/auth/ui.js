@@ -19,7 +19,6 @@ const signUpFailure = function () {
   $('#message').removeClass('success') // better?
   $('#message').addClass('success')
   $('#sign-up').trigger('rest')
-  $('#sign-in').trigger('rest')
   console.log('Sign up Error')
 }
 const signInSuccess = function (data) {
