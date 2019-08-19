@@ -16,5 +16,4 @@ $(() => {
   $('.grid').on('click', gameEvents.onMakeMove)
   $('#create-game').on('click', gameEvents.onCreateGame)
   $('#get-games').on('click', gameEvents.onGetGames)
-  $(')
 })
