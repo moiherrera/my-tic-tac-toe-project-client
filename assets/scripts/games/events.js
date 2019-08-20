@@ -34,9 +34,9 @@ let gameImages = '<img src="https://github.com/moiherrera/my-tic-tac-toe-project
 
 const changeImage = function () {
   if (activePlayer === 'x') {
-    gameImages = URL('https://github.com/moiherrera/my-tic-tac-toe-project-client/blob/master/images/X_Tic.png')
+    gameImages = URL('https://imgur.com/J9Q2xTT')
   } else {
-    gameImages = URL('https://github.com/moiherrera/my-tic-tac-toe-project-client/blob/master/images/rock_O.png')
+    gameImages = URL('https://imgur.com/dFP264P')
   }
 }
 
