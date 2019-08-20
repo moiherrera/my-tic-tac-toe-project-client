@@ -12,7 +12,6 @@ const nextPlayer = function () {
 }
 
 const identifyWinner = function (gameSoFar) {
-  console.log(gameSoFar)
   if ((gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[1] && gameSoFar[0] === gameSoFar[2]) ||
        (gameSoFar[0] !== undefined && gameSoFar[0] === gameSoFar[3] && gameSoFar[0] === gameSoFar[6]) ||
        (gameSoFar[1] !== undefined && gameSoFar[1] === gameSoFar[4] && gameSoFar[1] === gameSoFar[7]) ||
@@ -30,15 +29,6 @@ const identifyWinner = function (gameSoFar) {
   return gameSoFar
 }
 
-<<<<<<< HEAD
-let gameImages = '<img src="https://github.com/moiherrera/my-tic-tac-toe-project-client/blob/master/images/rock_O.png"/>'
-
-const changeImage = function () {
-  if (activePlayer === 'x') {
-    gameImages = URL('https://imgur.com/J9Q2xTT')
-  } else {
-    gameImages = URL('https://imgur.com/dFP264P')
-=======
 let gameImages = '<img src="../public/o.png"/>'
 
 const changeImage = function () {
@@ -46,7 +36,6 @@ const changeImage = function () {
     gameImages = '<img class="resize" src="../public/X_Tic.png" />'
   } else {
     gameImages = '<img class="resize" src= "../public/rock_O.png" />'
->>>>>>> old-state
   }
 }
 
@@ -57,10 +46,8 @@ const onMakeMove = function (event) {
     gameSoFar[currentIndex] = activePlayer
     store.index = currentIndex
     store.value = activePlayer
-    console.log(currentIndex)
-    console.log(gameSoFar)
     changeImage()
-    $(this).text(activePlayer)
+    $(this).prepend(gameImages)
     identifyWinner(gameSoFar)
     const currentMoveData = {
       game: {
@@ -81,7 +68,6 @@ const onMakeMove = function (event) {
 
 const onCreateGame = function (event) {
   event.preventDefault()
-  console.log('New Game Created')
   const data = getFormFields(event.target)
   gameSoFar = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
   activePlayer = 'o'
@@ -92,7 +78,6 @@ const onCreateGame = function (event) {
 
 const onGetGames = function (data) {
   event.preventDefault()
-  console.log('Get games')
   api.getGames(data)
     .then(ui.getGamesSuccess)
     .catch(ui.getGamesFailure)

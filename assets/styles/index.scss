@@ -3,11 +3,7 @@
 $alt-color: $white;
 
 body {
-<<<<<<< HEAD
-  https://moiherrera.github.io/my-tic-tac-toe-project-client/
-=======
   background-image: url('public/back_desert.jpg');
->>>>>>> old-state
   background-position: center center;
 			background-repeat:  no-repeat;
 			background-attachment: fixed;
@@ -42,9 +38,11 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
 .container {
   display: flex;
 }
+
 .box {
   align-items: center;
   // background-color: $white;
