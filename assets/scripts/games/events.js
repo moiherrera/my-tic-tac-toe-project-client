@@ -50,7 +50,7 @@ const onMakeMove = function (event) {
     console.log(currentIndex)
     console.log(gameSoFar)
     changeImage()
-    $(this).prepend(gameImages)
+    $(this).text(activePlayer)
     identifyWinner(gameSoFar)
     const currentMoveData = {
       game: {
