@@ -30,6 +30,16 @@ const identifyWinner = function (gameSoFar) {
   return gameSoFar
 }
 
+let gameImages = '<img src="../images/o.png"/>'
+
+const changeImage = function () {
+  if (activePlayer === 'x') {
+    gameImages = '<img class="resize" src="../images/X_Tic.png" />'
+  } else {
+    gameImages = '<img class="resize" src= "../images/rock_O.png" />'
+  }
+}
+
 const onMakeMove = function (event) {
   if (store.over === false && $(this).is(':empty')) {
     nextPlayer()
@@ -39,7 +49,8 @@ const onMakeMove = function (event) {
     store.value = activePlayer
     console.log(currentIndex)
     console.log(gameSoFar)
-    $(this).text(activePlayer)
+    changeImage()
+    $(this).prepend(gameImages)
     identifyWinner(gameSoFar)
     const currentMoveData = {
       game: {

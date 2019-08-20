@@ -1,14 +1,49 @@
 @import '~bootstrap/scss/bootstrap';
 
 $alt-color: $white;
-$body-bg-color: $gray-200;
+
 body {
-  background-color: $body-bg-color;
+  background-image: url('images/back_desert.jpg');
+  background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+  height: 70%;
+
 }
 
+h1 {
+  color: rgba(0, 0, 0, .6);
+  text-align: center;
+  align-items: center;
+  font-size: 200px;
+  text-shadow: 0px 2px 3px #555;
+
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+}
+
+.statues {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#auth-events {
+  margin: 0 auto;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+}
 .box {
   align-items: center;
-  background-color: $white;
+  // background-color: $white;
   border: 1px solid $black;
   color: black;
   display: flex;
@@ -18,4 +53,15 @@ body {
 
 .alt-color {
   background-color: $alt-color;
+}
+
+.resize {
+  max-height: 100%;
+  max-width: 100%;
+  animation: crescendo .5s reverse;
+}
+
+@keyframes crescendo {
+  100%{transform: scale(5);}
+  0% {transform: scale(1);}
 }
