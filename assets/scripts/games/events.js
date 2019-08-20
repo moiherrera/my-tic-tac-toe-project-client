@@ -30,6 +30,7 @@ const identifyWinner = function (gameSoFar) {
   return gameSoFar
 }
 
+<<<<<<< HEAD
 let gameImages = '<img src="https://github.com/moiherrera/my-tic-tac-toe-project-client/blob/master/images/rock_O.png"/>'
 
 const changeImage = function () {
@@ -37,6 +38,15 @@ const changeImage = function () {
     gameImages = URL('https://imgur.com/J9Q2xTT')
   } else {
     gameImages = URL('https://imgur.com/dFP264P')
+=======
+let gameImages = '<img src="../public/o.png"/>'
+
+const changeImage = function () {
+  if (activePlayer === 'x') {
+    gameImages = '<img class="resize" src="../public/X_Tic.png" />'
+  } else {
+    gameImages = '<img class="resize" src= "../public/rock_O.png" />'
+>>>>>>> old-state
   }
 }
 
