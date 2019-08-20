@@ -30,13 +30,13 @@ const identifyWinner = function (gameSoFar) {
   return gameSoFar
 }
 
-let gameImages = '<img src="../images/o.png"/>'
+let gameImages = '<img src="../public/o.png"/>'
 
 const changeImage = function () {
   if (activePlayer === 'x') {
-    gameImages = '<img class="resize" src="../images/X_Tic.png" />'
+    gameImages = '<img class="resize" src="../public/X_Tic.png" />'
   } else {
-    gameImages = '<img class="resize" src= "../images/rock_O.png" />'
+    gameImages = '<img class="resize" src= "../public/rock_O.png" />'
   }
 }
 
